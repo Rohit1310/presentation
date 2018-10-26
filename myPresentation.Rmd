@@ -1,0 +1,53 @@
+---
+title: "myPresentation"
+author: "Rohit Jain"
+date: "10/25/2018"
+output: ioslides_presentation
+---
+
+## Presentation with plotly
+
+### Objective
+
+- to create Plotly graphs
+- to create r presentation
+
+
+## Dataset to be used for ploting
+
+### dataset: 
+```{r dataset, warning=FALSE , comment= ""}
+
+dt <- cars
+head(cars)
+
+
+```
+
+## Graphs code 
+
+```{r plotlt,warning=FALSE,comment="", message=FALSE}
+library(plotly)
+phis <- plot_ly(x=dt$speed,type = "histogram") %>%
+  layout(title = 'histogram for speed',
+         xaxis = list(title = "Speed"),
+         yaxis = list(title = "Frequency"))
+
+pbox1 <- plot_ly(dt,x =~speed,type = "box", name ="speed")
+pbox2 <- plot_ly(dt,x =~dist,type = "box", name = "distance")%>%
+  layout(title = "boxplot")
+pbox <- subplot(pbox1,pbox2)
+
+```
+
+*** 
+```{r}
+phis
+```
+
+*** 
+```{r}
+pbox
+```
+
+## Thank You
